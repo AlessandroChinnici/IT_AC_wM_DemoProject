@@ -7,3 +7,8 @@ packages:
   gitUrl: https://github.com/AlessandroChinnici
   gitUsername: AlessandroChinnici
   gitBranch: main
+services:
+- serviceName: project.it_ac_wm_demo.integrations:Test
+  packages:
+  - name: IT_AC_wM_DemoProject
+    version: "1.0"
