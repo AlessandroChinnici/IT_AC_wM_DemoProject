@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Description>Somma di due numeri interi rappresentati come string</Description>
+  <Name>somma:addTwoNumbers</Name>
+  <Interface>somma</Interface>
+  <InputType class="IData" name="FlowData"/>
+  <OutputType class="IData" name="FlowData"/>
+
+  <!-- Input Fields -->
+  <InputField type="string">
+    <Name>num1</Name>
+    <Description>First integer number as string</Description>
+  </InputField>
+  <InputField type="string">
+    <Name>num2</Name>
+    <Description>Second integer number as string</Description>
+  </InputField>
+
+  <!-- Output Fields -->
+  <OutputField type="string">
+    <Name>sum</Name>
+    <Description>Sum result of num1 and num2</Description>
+  </OutputField>
+
+  <!-- Flow Logic -->
+  <Body>
+    <!-- Step 1: Invoke pub.math:addInts service to add numbers -->
+    <InvokeService name="addInts">
+      <Description>Convertire le stringhe in numeri interi e sommarli</Description>
+      
+      <!-- Input Parameters -->
+      <Parameter name="num1" type="string">
+        <Value>$FlowData/num1</Value>
+      </Parameter>
+      <Parameter name="num2" type="string">
+        <Value>$FlowData/num2</Value>
+      </Parameter>
+
+      <!-- Output Mapping -->
+      <Result>
+        <Field name="value" type="string">$addInts/value</Field>
+      </Result>
+    </InvokeService>
+
+    <!-- Step 2: Map result to output field sum -->
+    <Set name="sum" value="$addInts/value"/>
+
+    <!-- Step 3: Clean up unused fields from pipeline -->
+    <Drop name="num1"/>
+    <Drop name="num2"/>
+  </Body>
+</FlowService>
