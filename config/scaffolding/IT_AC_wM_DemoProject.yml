@@ -12,7 +12,19 @@ services:
   packages:
   - name: IT_AC_wM_DemoProject
     version: "1.0"
+- serviceName: project.it_ac_wm_demo.integrations:addTwoNumber
+  packages:
+  - name: IT_AC_wM_DemoProject
+    version: "1.0"
+- serviceName: fld_111807603_stage00.projects.fl7f397e97d637421b92dd6f2993fc4c2e.integrations:addTwoNumbers
+  packages:
+  - name: IT_AC_wM_DemoProject
+    version: "1.0"
 - serviceName: project.it_ac_wm_demo.integrations:addTwoNumbers
   packages:
   - name: IT_AC_wM_DemoProject
     version: "1.0"
+- serviceName: pub.math:addInts
+  packages:
+  - name: WmPublic
+    version: 12.1.0.0.1032
