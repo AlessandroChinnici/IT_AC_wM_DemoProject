@@ -12,3 +12,7 @@ services:
   packages:
   - name: IT_AC_wM_DemoProject
     version: "1.0"
+- serviceName: project.it_ac_wm_demo.integrations:addTwoNumbers
+  packages:
+  - name: IT_AC_wM_DemoProject
+    version: "1.0"
