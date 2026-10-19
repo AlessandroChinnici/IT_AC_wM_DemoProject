@@ -1,0 +1,44 @@
+interface somma
+
+service addTwoNumbers (
+    input {
+        String num1 [required];
+        String num2 [required];
+    }
+    output {
+        String sum;
+    }
+) properties {
+    comment: "Somma di due numeri interi rappresentati come string";
+} {
+    INVOKE pub.math:addInts {
+        comment: "Convertire le stringhe in numeri interi e sommarli"
+        input {
+            mapSource {
+                String num1;
+                String num2;
+            }
+            mapTarget {
+                String num1;
+                String num2;
+            }
+            copy num1 -> num1;
+            copy num2 -> num2;
+        }
+        output {
+            mapSource {
+                String `value`;
+            }
+            mapTarget {
+                String sum;
+            }
+            copy `value` -> sum;
+        }
+    }
+    MAP {
+        mapSource {
+            String value;
+        }
+        drop value;
+    };
+}
